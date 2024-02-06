@@ -1,0 +1,89 @@
+.formControl {
+    position: relative;
+    margin-top: 20px;
+}
+
+.placeholder {
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1em;
+    color: rgba(var(--rgb-text-color), .7);
+    z-index: 1;
+    transition: .4s;
+
+}
+
+.field {
+    color: rgba(var(--rgb-text-color), 1);
+    padding: 10px;
+    background: transparent;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid rgba(var(--rgb-first-color), 0.5);
+    transition: .4s;
+    position: absolute;
+    z-index: 2;
+}
+
+.field::placeholder {
+    color: transparent;
+}
+
+.field:focus {
+    outline: none;
+    border-bottom: 2px solid rgba(var(--rgb-first-color), 1);
+}
+
+.placeholderActive {
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: rgba(var(--rgb-first-color), 1);
+    transform: translateY(-100%);
+}
+
+
+
+/* .label {
+    display: grid;
+    gap: 10px;
+    flex: 1 1 auto;
+}
+
+.field {
+    font-size: 1em;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid rgba(var(--rgb-first-color), 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    overflow: hidden;
+    transition: .4s;
+}
+
+.field:focus {
+    outline: none;
+    border-color: rgba(var(--rgb-first-color), 1);
+}
+
+
+.field::placeholder {
+    transform: translate(0%, 0px);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1em;
+    transition: .4s;
+}
+
+
+.field:focus::placeholder {
+    transform: translate(0%, -15px);
+    color: rgba(255, 255, 255, .5);
+    font-size: .8em;
+}
+.field::placeholder:valid {
+    transform: translate(0%, -15px);
+    color: rgba(255, 255, 255, 1);
+    font-size: .8em;
+} */

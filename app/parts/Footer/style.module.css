@@ -1,0 +1,23 @@
+.footer{
+    background: var(--third-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerWrapper{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 75px;
+    width: clamp(320px, 100%, var(--max-width));
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    gap: 10px;
+}

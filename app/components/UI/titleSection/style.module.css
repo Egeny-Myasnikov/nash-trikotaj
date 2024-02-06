@@ -1,0 +1,12 @@
+.title{
+    letter-spacing: 2px;
+    font-weight: normal;
+    font-size: var(--title__med);
+}
+
+
+.firstWordTitle{
+    color:var(--first-color);
+    font-family: var(--font-bad-script);
+    font-size: 1.4em;
+}

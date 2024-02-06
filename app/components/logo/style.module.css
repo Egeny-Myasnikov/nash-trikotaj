@@ -1,0 +1,10 @@
+.logo{
+    font-size: var(--size-logo);
+    font-family: var(--font-bad-script);
+    color:var(--first-color);
+}
+.logo p{
+    line-height: 100%;
+    letter-spacing: 5px;
+    font-weight: bold;
+}

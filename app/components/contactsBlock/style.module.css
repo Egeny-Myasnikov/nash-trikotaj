@@ -1,0 +1,36 @@
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.address {
+
+    font-size: var(--text__sm);
+    font-weight: bold;
+    font-style: normal;
+}
+.address p{
+    padding: 10px;
+}
+.contacts__tel{
+    padding: 10px;
+    color:var(--first-color);
+    letter-spacing: 1px;
+    position: relative;
+}
+.contacts__tel::after{
+    padding: 5px;
+    position: absolute;
+    content: attr(title);
+    color: var(--first-color);
+    transform: translate(0%, 0%) rotate(0deg) scale(0);
+    transform-origin: left;
+    letter-spacing: 0;
+    transition: transform var(--default-transition), letter-spacing var(--default-transition) .6s;
+}
+
+.contacts__tel:hover::after {
+    transform: translate(0%, -25%) rotate(0deg) scale(1);
+    letter-spacing: 2px;
+}

@@ -1,0 +1,94 @@
+.link {
+    --leftBefore-direction__left: -30px;
+    --leftBefore-direction__right: 100%;
+    --leftAfter-direction__left: -45px;
+    --leftAfter-direction__right: calc(100% + 30px);
+    --border-right-direction__left: rgba(var(--rgb-first-color), 1);
+    --border-left-direction__left: transparent;
+    --border-right-direction__right: transparent;
+    --border-left-direction__right: rgba(var(--rgb-first-color), 1);
+
+    --leftBefore: var(--leftBefore-direction__right);
+    /* --leftBefore: var(--leftBefore-direction__left); */
+    --leftAfter: var(--leftAfter-direction__right);
+    /* --leftAfter:var(--leftAfter-direction__left); */
+    --border-right: var(--border-right-direction__right);
+    /* --border-right: var(--border-right-direction__left); */
+    --border-left: var(--border-left-direction__right);
+    /* --border-left: var(--border-left-direction__left); */
+
+    --transition-in: top .4s, left .4s .1s, width .4s .2s, transform .4s .4s;
+    --transition-out: top .4s .4s, left .4s .2s, width .4s .1s, transform .4s;
+
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    color: rgba(var(--rgb-first-color), 1);
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+    border-radius: 10px;
+    transition: .4s;
+}
+
+.link::after,
+.link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(var(--rgb-first-color), 1);
+}
+
+.link::before {
+    left: var(--leftBefore);
+    width: 30px;
+    height: 2px;
+    transition: var(--transition-out);
+}
+
+.link::after {
+    width: 0;
+    height: 0;
+    left: var(--leftAfter);
+    background: transparent;
+    border: 8px solid transparent;
+    border-right-color: var(--border-right);
+    border-left-color: var(--border-left);
+    transition: all .4s .5s, var(--transition-out);
+}
+
+.link:active {
+    letter-spacing: 2px;
+    transition: .4s;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+    .link {
+        border: 2px solid rgba(var(--rgb-first-color), 0);
+    }
+
+    .link:hover::before,
+    .link:hover::after {
+        width: 90%;
+        left: 0;
+        transform: translateY(-50%) translateX(10%);
+    }
+
+    .link:hover::before {
+        top: 100%;
+        transition: var(--transition-in);
+    }
+
+    .link:hover::after {
+        top: 0%;
+        height: 2px;
+        border: 0px solid transparent;
+        background: rgba(var(--rgb-first-color), 1);
+        transition: all .1s, var(--transition-in);
+    }
+
+    .link:hover {
+        letter-spacing: 1px;
+        transition: .4s .4s;
+    }
+}

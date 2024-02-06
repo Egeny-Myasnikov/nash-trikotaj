@@ -1,0 +1,43 @@
+.btnClose{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border-radius: 50%;
+    background: rgba(var(--rgb-first-color), 0);
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+    box-shadow: 0px 0px 10px rgba(var(--rgb-first-color), .5), inset 0px 0px 10px rgba(var(--rgb-second-color), .5);
+    transition: var(--default-transition);
+}
+.btnClose:hover{
+    background: rgba(var(--rgb-first-color), .3);
+}
+
+.btnClose::after,
+.btnClose::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-bottom: 1px solid rgba(var(--rgb-first-color), 1);
+    width: 50%;
+    height: 1px;
+    transition: var(--default-transition);
+}
+
+.btnClose::after {
+    transform:  translate(-50%, -50%) rotate(45deg);
+}
+
+.btnClose::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.btnClose:hover::after,
+.btnClose:hover::before{
+    width: 70%;
+}
+
+.btnClose:active{
+    transform: scale(.5);
+}

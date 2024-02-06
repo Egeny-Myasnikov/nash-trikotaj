@@ -1,0 +1,51 @@
+
+/* icons */
+.socIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socIconsLink {
+    position: relative;
+    padding: 10px;
+    transition: var(--default-transition);
+}
+
+.socIconsLink:hover {
+    transform: translateY(-5px);
+}
+
+.socIconsLink::after {
+    position: absolute;
+    content: attr(title);
+    color: var(--first-color);
+    transform: translate(0%, 0%) rotate(0deg) scale(0);
+    letter-spacing: 0;
+    transition: transform var(--default-transition), letter-spacing var(--default-transition) .6s;
+
+}
+
+.socIconsLink:hover::after {
+    transform: translate(0%, -100%) rotate(-10deg) scale(1);
+    letter-spacing: 2px;
+}
+
+.icon {
+    --size-icon: 20px;
+    width: calc(var(--size-icon) + 8px);
+    height: var(--size-icon);
+    fill: transparent;
+    stroke: var(--first-color);
+    stroke-width: 1px;
+    overflow: visible;
+}
+
+.icon__onlyFill {
+    fill: var(--first-color);
+    stroke-width: 0px;
+}
+
+.icon__onlyStroke {
+    fill: transparent;
+}

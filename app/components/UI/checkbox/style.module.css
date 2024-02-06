@@ -1,0 +1,82 @@
+.checkboxWrap {
+    width: 100%;
+    --size: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox {
+    flex: 1 0 auto;
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    background-image: linear-gradient(transparent, rgba(var(--rgb-first-color), 1));
+    background-size: 150% 150%;
+    background-position-y: 0%;
+    box-shadow: inset 0px -1px 10px rgba(30, 255, 30, 0.5);
+    border-radius: 5px;
+    border-bottom: 2px solid rgba(30, 255, 30, 0.5);
+    position: relative;
+    z-index: 3;
+    transition: .4s;
+}
+.active.checkbox {
+    box-shadow: inset 0px -1px 10px rgba(250, 30, 30, 0.5);
+    border-bottom-color: rgba(250, 30, 30, 0.5);
+    background-position-y: 300%;
+    transition: .4s;
+
+}
+
+.checkboxDef {
+    display: none;
+}
+
+.checkboxText {
+    color: rgba(var(--rgb-text-color), .6);
+    padding: 10px;
+    width: 100%;
+}
+
+.checkbox::after,
+.checkbox::before {
+    border-radius: 50%;
+    display: block;
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    width: 3px;
+    background: rgb(30, 255, 30);
+    transform-origin: bottom left;
+    transition: .4s;
+}
+.active.checkbox::after,
+.active.checkbox::before {
+    background: rgb(255, 30, 30);
+    transform-origin: center center;
+    transition:.4s;
+}
+
+.checkbox::after {
+    height: 130%;
+    transform: translateX(-50%) rotate(25deg);
+
+}
+
+.checkbox::before {
+    height: 70%;
+    transform: translateX(-50%) rotate(-25deg);
+}
+.active.checkbox::after {
+    height: 70%;
+    transform: translateX(-50%) rotate(45deg);
+
+}
+
+.active.checkbox::before {
+    height: 70%;
+    transform: translateX(-50%) rotate(-45deg);
+}

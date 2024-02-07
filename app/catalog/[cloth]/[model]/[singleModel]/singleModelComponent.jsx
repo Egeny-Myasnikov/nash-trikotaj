@@ -41,7 +41,7 @@ export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' 
                                     <h4 className={`${s.sizeTitle}`}>Размеры:</h4>
                                     <ul className={`${s.sizeList}`}>
                                         {size.map((size, idx) => (
-                                            <li key={size}>
+                                            <li key={idx}>
                                                 <button
                                                     onClick={() => setIdxSize(idx)}
                                                     className={`${s.sizeItem} ${idxSize === idx ? s.active : ''}`}
@@ -55,7 +55,7 @@ export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' 
                                     <h4 className={`${s.colorTitle}`}>Цвета:</h4>
                                     <ul className={`${s.colorList}`}>
                                         {color.map(({ color }, idx) =>
-                                        (<li key={color}>
+                                        (<li key={idx}>
                                             <button
                                                 onClick={() => setIdxColor(idx)}
                                                 style={{ '--color': color }}

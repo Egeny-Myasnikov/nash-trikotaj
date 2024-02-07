@@ -1,11 +1,12 @@
 .catalogList {
     margin-top: 60px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    gap:40px;
+    gap: 40px;
     flex-wrap: wrap;
 }
+
 .catalogCard {
     display: block;
     width: 300px;
@@ -13,7 +14,7 @@
     position: relative;
     border: 3px solid rgba(var(--rgb-first-color), .4);
     border-radius: 20px;
-    transition:.4s;
+    transition: .4s;
 }
 
 .img {
@@ -21,12 +22,13 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 20px;
-    transition:.4s;
+    transition: .4s;
 }
-.catalogCard:hover .img{
-    transform:scale(1.05);
+
+.catalogCard:hover .img {
+    transform: scale(1.05);
 }
 
 .title {

@@ -11,17 +11,17 @@ export const CardComponent = ({ listData }) => {
     return (
         <ul className={`${s.catalogList}`}>
 
-            {listData.length!==0  ?
-                listData.map(({ title = '', imgCover = '', category = '', clothTitle = '' }) => (
+            {listData.length !== 0 ?
+                listData.map(({ title = '', imgCover = '', category = '', clothTitle = '' }, idx) => (
                     <Link
-                        key={title}
+                        key={idx}
                         className={`${s.catalogCard}`}
                         href={path({ title, category, clothTitle })}>
-                        <Image className={`${s.img}`} src={imgCover} width={300} height={300} alt={title} />
+                        <Image className={`${s.img}`} src={imgCover || '/imgs/no-photo.png'} width={300} height={300} alt={title} />
                         <h4 className={`${s.title}`}>{title}</h4>
                     </Link>
-                )):
-                <NotFound/>
+                )) :
+                <NotFound />
             }
 
         </ul>

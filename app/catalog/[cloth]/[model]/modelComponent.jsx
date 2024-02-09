@@ -1,7 +1,7 @@
 'use client'
 import { useCatalogStore } from '@/app/store/catalogStore';
 import s from './style.module.css'
-import { CardComponent } from '@/app/components/card';
+import { CardComponent } from '@/app/catalog/components/card';
 import { BreadCrumbs } from '@/app/components/breadCrumbs';
 export const ModelComponent = ({ cloth, model }) => {
     const getModelData = useCatalogStore((state) => state.getModelData(cloth, model))

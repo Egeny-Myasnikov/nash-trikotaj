@@ -1,6 +1,6 @@
 'use client'
 import { TitleSection } from '@/app/components/UI/titleSection'
-import { CardComponent } from '@/app/components/card'
+import { CardComponent } from '@/app/catalog/components/card'
 import { useCatalogStore } from '@/app/store/catalogStore'
 import s from './style.module.css'
 export const CatalogSection = () => {

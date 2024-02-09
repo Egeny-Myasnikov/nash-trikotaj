@@ -1,7 +1,7 @@
 'use client'
 import s from './style.module.css'
 import { useCatalogStore } from '@/app/store/catalogStore'
-import { CardComponent } from '@/app/components/card'
+import { CardComponent } from '@/app/catalog/components/card'
 export const CatalogSection = () => {
     const getCatalogData = useCatalogStore((state) => state.getCatalogData())
 

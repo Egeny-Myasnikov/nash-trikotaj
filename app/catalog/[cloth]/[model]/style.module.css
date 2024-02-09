@@ -1,3 +1,9 @@
-.titleCategory{
+.titleCategory {
     font-size: var(--title__lg);
+    color: var(--first-color);
+    text-align: center;
+}
+
+.category {
+    padding: 0 10px;
 }

@@ -11,7 +11,7 @@
 }
 
 .headerWrapper {
-    padding: 10px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +47,7 @@
         align-items: center;
         width: 100%;
         min-height: 100%;
-        background:var(--second-color);
+        background: var(--second-color);
         position: fixed;
         inset: 0;
     }

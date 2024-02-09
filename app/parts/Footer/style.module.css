@@ -1,12 +1,12 @@
-.footer{
+.footer {
     background: var(--third-color);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.footerWrapper{
-    padding: 10px;
+.footerWrapper {
+    padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

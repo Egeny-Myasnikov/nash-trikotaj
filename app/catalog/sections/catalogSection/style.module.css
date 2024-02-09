@@ -1,5 +1,11 @@
-.titleCatalogSection{
+.catalogSection {
+    margin-top: 60px;
+}
+
+.titleCatalogSection {
     font-size: var(--title__lg);
+    color: var(--first-color);
+    text-align: center;
 }
 
 .catalogList {
@@ -7,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap:40px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
@@ -18,7 +24,7 @@
     position: relative;
     border: 3px solid rgba(var(--rgb-first-color), .4);
     border-radius: 20px;
-    transition:.4s;
+    transition: .4s;
 }
 
 .img {
@@ -28,10 +34,11 @@
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
-    transition:.4s;
+    transition: .4s;
 }
-.catalogCard:hover .img{
-    transform:scale(1.05);
+
+.catalogCard:hover .img {
+    transform: scale(1.05);
 }
 
 .title {

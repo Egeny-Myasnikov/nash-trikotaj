@@ -1,20 +1,17 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { strToPath } from '@/app/helper'
+import { path } from '@/app/helper'
 import s from './style.module.css'
 import NotFound from '@/app/not-found'
 export const CardComponent = ({ listData }) => {
 
-    const path = ({ category = null, title, clothTitle = null }) => {
-        return `/catalog/${strToPath(category)}/${strToPath(clothTitle)}/${strToPath(title)}`
-    }
     return (
         <ul className={`${s.catalogList}`}>
 
             {listData.length !== 0 ?
-                listData.map(({ title = '', imgCover = '', category = '', clothTitle = '' }, idx) => (
+                listData.map(({ title = '', imgCover = '', category = '', clothTitle = '', id }) => (
                     <Link
-                        key={idx}
+                        key={id}
                         className={`${s.catalogCard}`}
                         href={path({ title, category, clothTitle })}>
                         <Image className={`${s.img}`} src={imgCover || '/imgs/no-photo.png'} width={300} height={300} alt={title} />

@@ -6,8 +6,8 @@ export const ContactsBlock = () => {
     return (
         <div className={`${s.contacts}`}>
             <address className={s.address}>
-                <p>г. Саратов, Астраханская 16</p>
-                <Link className={`${s.contacts__tel}`} href='tel:+70004400404' title="Позвонить" >8 (000) 440-04-04</Link>
+                <p>г. Саратов, Крымская, 5</p>
+                <Link className={`${s.contacts__tel}`} href='tel:+79001658659' title="Позвонить" >+7(900) 165-86-59</Link>
             </address>
             <SocIcons />
         </div>

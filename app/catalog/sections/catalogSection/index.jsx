@@ -10,7 +10,6 @@ export const CatalogSection = () => {
             <h1 className={`${s.titleCatalogSection}`}>Каталог</h1>
 
             <CardComponent listData={getCatalogData} />
-
         </div>
     )
 }

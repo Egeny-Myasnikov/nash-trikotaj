@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { strToPath } from '../helper'
 import { devtools } from 'zustand/middleware'
+import { v4 as uuidv4 } from 'uuid'
+
 
 
 const imgPath = '/imgs/catalog/'
@@ -345,14 +347,17 @@ export const useCatalogStore = create(devtools((set, get) => ({
     // },
     catalog: [
         {
+            id: uuidv4(),
             title: 'Мужская одежда',
             imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
             cloth: [
                 {
+                    id: uuidv4(),
                     title: 'Мужские футболки',
                     imgCover: `${imgPath}06-02-24/futbolri-mens.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Футболка ',
                             imgCover: `${imgPath}06-02-24/futbolka-men-48-56.jpg`,
                             size: ['48', '50', '52', '54', '56'],
@@ -361,6 +366,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Футболки',
                             imgCover: `${imgPath}06-02-24/futbolri-mens.jpg`,
                             size: ['48', '50', '52', '54', '56'],
@@ -370,6 +376,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Тельняшка с начесом',
                             imgCover: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg`,
                             size: ['48', '50', '52', '54', '56'],
@@ -382,10 +389,12 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
+                    id: uuidv4(),
                     title: 'Мужские толстовки',
                     imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Толстовка',
                             imgCover: `${imgPath}06-02-24/tolstovka-blue-men.jpg`,
                             size: [],
@@ -394,6 +403,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Толстовка "Хакки"',
                             imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
                             size: [],
@@ -407,14 +417,17 @@ export const useCatalogStore = create(devtools((set, get) => ({
             ],
         },
         {
+            id: uuidv4(),
             title: 'Женская одежда',
             imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
             cloth: [
                 {
+                    id: uuidv4(),
                     title: 'Футболки',
                     imgCover: `${imgPath}06-02-24/futbolka-women-blue.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Футболка',
                             imgCover: `${imgPath}06-02-24/futbolka-women-blue.jpg`,
                             size: [],
@@ -423,6 +436,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Футболка "cats"',
                             imgCover: `${imgPath}06-02-24/futbolka-women-123.jpg`,
                             size: [],
@@ -431,6 +445,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Футболка в полоску',
                             imgCover: `${imgPath}06-02-24/futbolka-women-pink.jpg`,
                             size: [],
@@ -441,10 +456,12 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
+                    id: uuidv4(),
                     title: 'Халаты',
                     imgCover: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Халат "Ангорка"',
                             imgCover: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg`,
                             size: ['48', '50', '52', '54', '56'],
@@ -455,11 +472,31 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
-                    title: 'Куртки',
+                    id: uuidv4(),
+                    title: 'Верхняя одежда',
                     imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Куртка',
+                            imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
+                            size: [],
+                            color: [
+                                { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
+                            ],
+                        },
+                        {
+                            id: uuidv4(),
+                            title: 'Плащь',
+                            imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
+                            size: [],
+                            color: [
+                                { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
+                            ],
+                        },
+                        {
+                            id: uuidv4(),
+                            title: 'Пиджаки',
                             imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
                             size: [],
                             color: [
@@ -469,10 +506,12 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
+                    id: uuidv4(),
                     title: 'Платья',
                     imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Платье черное',
                             imgCover: `${imgPath}06-02-24/platie-women-black.jpg`,
                             size: [],
@@ -481,6 +520,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Платье бирюзовое',
                             imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
                             size: [],
@@ -491,10 +531,12 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
+                    id: uuidv4(),
                     title: 'Сорочки',
                     imgCover: `${imgPath}06-02-24/sorochka-women-blue.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Сорочка синяя',
                             imgCover: `${imgPath}06-02-24/sorochka-women-blue.jpg`,
                             size: [],
@@ -503,6 +545,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Сорочка с начесом',
                             imgCover: `${imgPath}06-02-24/sorochka-women-50-60.jpg`,
                             size: ['50', '52', '54', '56'],
@@ -513,10 +556,12 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
+                    id: uuidv4(),
                     title: 'Трико',
                     imgCover: `${imgPath}06-02-24/triko-women.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Трико бирюзовое',
                             imgCover: `${imgPath}06-02-24/triko-women.jpg`,
                             size: [],
@@ -525,6 +570,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Трико',
                             imgCover: `${imgPath}06-02-24/triko-womens.jpg`,
                             size: [],
@@ -535,10 +581,12 @@ export const useCatalogStore = create(devtools((set, get) => ({
                     ],
                 },
                 {
+                    id: uuidv4(),
                     title: 'Туника',
                     imgCover: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg`,
                     model: [
                         {
+                            id: uuidv4(),
                             title: 'Туника "Ангорка"',
                             imgCover: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg`,
                             size: ['50', '52', '54', '56', '58', '60'],
@@ -547,14 +595,16 @@ export const useCatalogStore = create(devtools((set, get) => ({
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Туника темная',
-                            imgCover: `${imgPath}06-02-24/tunika-black-women.jpg`,
+                            imgCover: `${imgPath}06-02-24/tunika-black-women.jpg` ?? `/imgs/no-photo.png`,
                             size: [],
                             color: [
                                 { color: '#20202F', img: `${imgPath}06-02-24/tunika-black-women.jpg` },
                             ],
                         },
                         {
+                            id: uuidv4(),
                             title: 'Туника',
                             imgCover: `${imgPath}06-02-24/tunika-blue-women.jpg`,
                             size: [],
@@ -566,175 +616,14 @@ export const useCatalogStore = create(devtools((set, get) => ({
                 },
             ],
         },
-        // {
-        //     title: 'Для девочек',
-        //     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //     cloth: [
-        //         {
-        //             title: 'Футболки',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Футболка "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Джинсы',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Джинсы "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Майки',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Майки "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Носки',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Носки "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Трико',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Джинсы "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //     ],
-        // },
-        // {
-        //     title: 'Для мальчиков',
-        //     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //     cloth: [
-        //         {
-        //             title: 'Футболки',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Футболка "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Джинсы',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Джинсы "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Майки',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Майки "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Носки',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Носки "Богатырь"',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //         {
-        //             title: 'Трико',
-        //             imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //             model: [
-        //                 {
-        //                     title: 'Трико Богатырь',
-        //                     imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-        //                     size: ['160', '170', '180'],
-        //                     color: [
-        //                         { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-        //                         { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-        //                     ],
-        //                 }
-        //             ],
-        //         },
-        //     ],
-        // },
+
     ],
 
 
     getCatalogData: () => {
         let arr = []
         const cat = get().catalog
-        cat.forEach((el) => arr.push({ title: el.title, imgCover: el.imgCover }))
+        cat.forEach((el) => arr.push({ title: el.title, imgCover: el.imgCover, id: el.id }))
         return arr
     },
 

@@ -4,6 +4,7 @@ import { CastomLink } from '@/app/components/UI/castomLink'
 import { ContactsBlock } from '@/app/components/contactsBlock'
 import { useEffect, useState } from 'react'
 import s from './style.module.css'
+import Link from 'next/link'
 
 const links = [
     { href: '/catalog', text: 'Каталог' },
@@ -31,7 +32,7 @@ export const Header = () => {
             <div className={`${s.headerWrapper} ${isActive ? s.active : ''}`}>
 
                 {/* logo */}
-                <Logo onClick={closeNav} />
+                <Logo onClick={closeNav} className={s.logo} />
 
                 {/* navigation */}
                 <nav className={`${s.nav} ${isActive ? s.active : ''}`}>
@@ -44,6 +45,8 @@ export const Header = () => {
                 <div className={`${s.contactBlock} ${isActive ? s.active : ''}`}>
                     <ContactsBlock />
                 </div>
+                <Link className={`${s.contacts__tel}`} href='tel:+79001658659' title="Позвонить" >+7(900) 165-86-59</Link>
+
 
                 {/* button open/close menu */}
                 <button

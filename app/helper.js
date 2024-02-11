@@ -1,4 +1,5 @@
-export const rusToLat = function (str) {
+
+const rusToLat = function (str) {
   let ru = {
     'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
     'е': 'e', 'ё': 'e', 'ж': 'j', 'з': 'z', 'и': 'i',
@@ -22,5 +23,8 @@ export const rusToLat = function (str) {
   }).join('');
 }
 
-
 export const strToPath = str => rusToLat(str).split(' ').join('-').toLocaleLowerCase()
+
+export const path = ({ category = null, title, clothTitle = null }) => {
+  return `/catalog${category && '/' + strToPath(category)}${clothTitle && '/' + strToPath(clothTitle)}/${strToPath(title)}`
+}

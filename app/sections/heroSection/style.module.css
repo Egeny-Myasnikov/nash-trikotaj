@@ -1,14 +1,44 @@
-.imgWrap{
+.heroSection {
+    margin-top: 60px;
+}
+
+.title {
+    font-size: var(--title__lg);
+    color: var(--first-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.subTitle {
+    font-size: var(--title__sm);
+    text-align: center;
+}
+
+.description {
+    margin-top: 100px;
+    font-size: var(--text__lg);
+}
+
+.descriptionStrong {
+    font-weight: normal;
+}
+
+
+
+
+
+.imgWrap {
     flex: 1 0 100%;
     width: 100%;
     height: 400px;
     position: relative;
     scroll-snap-align: start;
-scroll-snap-stop: always;
-border-radius: 20px;
+    scroll-snap-stop: always;
+    border-radius: 20px;
 
 }
-.img{
+
+.img {
     object-fit: cover;
     position: absolute;
     width: 100%;
@@ -17,10 +47,11 @@ border-radius: 20px;
 }
 
 @media (max-width: 950px) {
-    .imgWrap{
-    border-radius: 0px;
+    .imgWrap {
+        border-radius: 0px;
     }
-    .img{
+
+    .img {
         border-radius: 0px;
     }
 

@@ -1,0 +1,136 @@
+.catalogList {
+    margin-top: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.catalogCard {
+    display: block;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border: 3px solid rgba(var(--rgb-first-color), .4);
+    border-radius: 20px;
+    transition: .4s;
+    flex: 1 0 auto;
+    overflow: hidden;
+}
+
+.img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+    border-radius: inherit;
+    transition: .4s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 82%;
+        object-fit: contain;
+        border-radius: inherit;
+        transition: .4s;
+    }
+
+    .info {
+        position: absolute;
+        border-radius: 0px 0px 20px 20px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        padding: 15px;
+        padding-top: 0;
+        background: rgba(11, 22, 33, 1);
+        color: var(--second-color);
+        transform: translateY(65%);
+        transition: .4s;
+    }
+
+
+    .catalogCard:hover .img {
+        height: 50%;
+    }
+
+    .catalogCard:hover .info {
+        transform: translateY(0%);
+    }
+
+    .title:hover::after {
+        transform: translateY(50%) translateX(-50%);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.info {
+    position: absolute;
+    border-radius: 0px 0px 20px 20px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    padding: 15px;
+    padding-top: 0;
+    background: rgba(11, 22, 33, 1);
+    color: var(--second-color);
+    transition: .4s;
+}
+
+.title {
+    padding: 15px;
+    text-align: center;
+    font-size: var(--text__lg);
+
+}
+
+
+
+
+.infoTitle {}
+
+.clothColors {
+    margin-top: 7px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.clothColor {
+    --clothColor: #333333;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+    background: var(--clothColor);
+
+}
+
+.clothSizes {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.clothSize {
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+}

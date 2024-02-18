@@ -18,7 +18,8 @@ export const CastomLink = forwardRef(({ text, href, onClick }, ref) => {
             ref={ref}
             key={text}
             className={`${s.link} ${path === href ? s.linkActive : ''}`}
-            href={href}>{text}
+            href={href}>
+            {text}
         </Link>
     )
 })

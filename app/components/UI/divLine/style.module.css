@@ -1,0 +1,54 @@
+.lineWrap {
+    margin-top: 160px;
+    margin-bottom: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.line {
+    margin: 0 auto;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('/logo.svg') no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-left: 2px solid var(--first-color);
+    border-right: 2px solid var(--first-color);
+}
+
+.line::before,
+.line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 50%;
+    height: 4px;
+    border-radius: 3px;
+
+}
+
+.line::before {
+    right: 50%;
+    transform: translate(-18px, -50%);
+    background: linear-gradient(270deg, var(--first-color), rgba(var(--rgb-first-color), .2), transparent);
+}
+
+.line::after {
+    transform: translate(18px, -50%);
+    left: 50%;
+    background: linear-gradient(90deg, var(--first-color), rgba(var(--rgb-first-color), .2), transparent);
+}
+
+@media (max-width: 950px) {
+
+    .lineWrap {
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+}

@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import s from './style.module.css'
+import Image from 'next/image'
 export const Logo = ({ onClick, className }) => {
     return (
         <Link onClick={onClick} href={'/'} className={`${s.logo} ${className}`}>
-            <p>Наш</p>
-            <p>трикотаж</p>
+            <Image src={'/logo-header.svg'} width={150} height={70} />
         </Link>
     )
 }

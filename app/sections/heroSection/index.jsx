@@ -1,10 +1,6 @@
 'use client'
-
 import { Slider } from '@/app/components/slider'
 import s from './style.module.css'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ContactsComponent } from '@/app/contacts/components/contacts'
 export const HeroSection = () => {
     const sliderList = [
         { src: 'trikotazh.jpg', alt: 'trikotazh' },
@@ -19,11 +15,6 @@ export const HeroSection = () => {
             <h2 className={`${s.subTitle}`}> От производителя "Богатырь" </h2>
 
             <p className={`${s.description}`}>В нашем магазине вы можете <strong className={`${s.descriptionStrong}`}>купить хлопковую одежду</strong> по низким ценам.</p>
-
-
-            <ContactsComponent />
-
-
 
             {/* <Slider>
                 {

@@ -1,65 +1,67 @@
 .btn {
     padding: 7px 10px;
+    padding-right: 40px;
     border-radius: 5px;
+    background-color: rgba(var(--rgb-first-color), 0);
     border: 1px solid var(--first-color);
     position: relative;
+    transition: .4s;
 }
 
 .btn::after,
 .btn::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    width: 50%;
-    height: 1px;
+    top: 10px;
+    right: 20px;
+    width: 2px;
+    height: 12px;
     background: var(--first-color);
-    transform: rotate(0deg);
+    transform-origin: bottom;
     transition: .4s, transform 0s;
-
 }
 
 .btn::after {
-    left: 0;
-    transform-origin: left;
+    transform: rotate(40deg);
 }
 
 .btn::before {
-    right: 0;
-    transform-origin: right;
+    transform: rotate(-40deg);
 }
 
-.btn.open::after {
-    left: 50%;
-    bottom: -40%;
-    width: 20px;
-    transform: rotate(-30deg);
-    transform-origin: left;
-    transition: bottom .4s, transform .4s;
-}
-
+.btn.open::after,
 .btn.open::before {
-    display: block;
-    right: 50%;
-    bottom: -40%;
-    width: 20px;
-    transform: rotate(30deg);
-    transform-origin: right;
-    transition: bottom .4s, transform .4s;
+    transform-origin: top;
+    transition: .4s;
+}
+
+.btn:hover,
+.btn.open {
+    background-color: rgba(var(--rgb-first-color), .2);
 }
 
 .children {
     height: 0;
     position: relative;
-    opacity: 0;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 0px;
-    border: 1px solid #333;
+    border: 0px solid #333;
     transform-origin: top left;
+    transform: scale(0);
     transition: .4s;
 }
 
 .children.open {
     height: 600px;
-    opacity: 1;
+    transform: scale(1);
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #333;
     transition: .4s;
+}
+
+@media (max-width: 505px) {
+    .children.open {
+        height: 450px;
+    }
 }

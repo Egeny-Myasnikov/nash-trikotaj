@@ -15,9 +15,7 @@ export const Footer = () => {
         <footer className={`${s.footer}`}>
 
             <div className={`${s.footerWrapper}`}>
-                <div>
-                    <Logo />
-                </div>
+                <Logo />
                 {/* navigation */}
                 <nav className={`${s.nav}`}>
                     {links.map(({ text, href }, idx) => (

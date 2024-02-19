@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <meta name="yandex-verification" content="c61a544470791e0d" />
+      <meta name="google-site-verification" content="ZD7AohvL5_DTDNzPjC5_cxACfYuoUgjwlnOyo064dJk" />
       <body className={`${Montserrat.variable} ${BadScript.variable}`}>
         <Header />
         <main className="main">

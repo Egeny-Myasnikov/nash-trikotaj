@@ -14,8 +14,8 @@ const Montserrat = localFont({
 
 export const metadata = {
   title: {
-    default:'Трикотаж в Саратове "Наш трикотаж"',
-    template:'%s | "Наш трикотаж" Саратов'
+    default: 'Трикотаж в Саратове "Наш трикотаж"',
+    template: '%s | "Наш трикотаж" Саратов'
   },
   description: ' Магазин "Наш трикотаж" предлагает вам купить в Саратове мужскую, женскую, детскую одежду от производителя "Богатырь" по привлекательным ценам',
 }
@@ -23,10 +23,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
+      <meta name="yandex-verification" content="c61a544470791e0d" />
       <body className={`${Montserrat.variable} ${BadScript.variable}`}>
         <Header />
         <main className="main">
-            {children}
+          {children}
         </main>
         <Footer />
       </body>

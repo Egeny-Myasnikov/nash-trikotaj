@@ -6,7 +6,7 @@ import s from './style.module.css'
 
 //generateMetadata
 export async function generateMetadata({ params: { cloth, model, singleModel } }) {
-    const res = await fetch(`http://localhost:3000/api?q=${singleModel}`)
+    const res = await fetch(`https://www.hlop-odejda.ru/api?q=${singleModel}`)
     const [catalog] = await res.json()
     return {
         title: catalog?.title

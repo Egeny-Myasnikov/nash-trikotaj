@@ -1,635 +1,307 @@
 import { create } from 'zustand'
 import { strToPath } from '../helper'
 import { devtools } from 'zustand/middleware'
-import { v4 as uuidv4 } from 'uuid'
-
-
-
-const imgPath = '/imgs/catalog/'
 
 
 export const useCatalogStore = create(devtools((set, get) => ({
 
-    // catalog: {
-    //     mens: {
+    cat: [],
+
+    // catalog: [
+    //     {
+    //         id: uuidv4(),
     //         title: 'Мужская одежда',
-    //         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //         imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
     //         cloth: [
     //             {
+    //                 id: uuidv4(),
     //                 title: 'Мужские футболки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 imgCover: `${imgPath}06-02-24/futbolri-mens.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Футболка "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Футболка ',
+    //                         imgCover: `${imgPath}06-02-24/futbolka-men-48-56.jpg`,
+    //                         size: ['48', '50', '52', '54', '56'],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#4C4B27', img: `${imgPath}06-02-24/futbolka-men-48-56.jpg` },
     //                         ],
     //                     },
     //                     {
-    //                         title: 'Футболка с длинным рукавом',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_red.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Футболки',
+    //                         imgCover: `${imgPath}06-02-24/futbolri-mens.jpg`,
+    //                         size: ['48', '50', '52', '54', '56'],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#12B1A0', img: `${imgPath}06-02-24/futbolri-mens.jpg` },
+    //                             { color: '#0E758D', img: `${imgPath}06-02-24/futbolri-mens.jpg` },
+    //                         ],
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Тельняшка с начесом',
+    //                         imgCover: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg`,
+    //                         size: ['48', '50', '52', '54', '56'],
+    //                         color: [
+    //                             { color: '#333249', img: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg` },
+    //                             { color: '#223685', img: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg` },
+
     //                         ],
     //                     },
     //                 ],
     //             },
     //             {
-    //                 title: 'Мужские джинсы',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 id: uuidv4(),
+    //                 title: 'Мужские толстовки',
+    //                 imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Толстовка',
+    //                         imgCover: `${imgPath}06-02-24/tolstovka-blue-men.jpg`,
+    //                         size: [],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#193E71', img: `${imgPath}06-02-24/tolstovka-blue-men.jpg` },
     //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Мужские майки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
+    //                     },
     //                     {
-    //                         title: 'Майка "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Толстовка "Хакки"',
+    //                         imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
+    //                         size: [],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#524E30', img: `${imgPath}06-02-24/tolstovka-haki-men.jpg` },
     //                         ],
-    //                     }
+    //                     },
     //                 ],
     //             },
-    //             {
-    //                 title: 'Мужские носки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Носки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Трико',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
+
     //         ],
     //     },
-    //     womens: {
+    //     {
+    //         id: uuidv4(),
     //         title: 'Женская одежда',
-    //         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //         imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
     //         cloth: [
     //             {
+    //                 id: uuidv4(),
     //                 title: 'Футболки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 imgCover: `${imgPath}06-02-24/futbolka-women-blue.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Футболка "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Футболка',
+    //                         imgCover: `${imgPath}06-02-24/futbolka-women-blue.jpg`,
+    //                         size: [],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#30384E', img: `${imgPath}06-02-24/futbolka-women-blue.jpg` },
     //                         ],
-    //                     }
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Футболка "cats"',
+    //                         imgCover: `${imgPath}06-02-24/futbolka-women-123.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#E6E3E8', img: `${imgPath}06-02-24/futbolka-women-123.jpg` },
+    //                         ],
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Футболка в полоску',
+    //                         imgCover: `${imgPath}06-02-24/futbolka-women-pink.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#B94084', img: `${imgPath}06-02-24/futbolka-women-pink.jpg` },
+    //                         ],
+    //                     },
     //                 ],
     //             },
     //             {
-    //                 title: 'Джинсы',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 id: uuidv4(),
+    //                 title: 'Халаты',
+    //                 imgCover: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Халат "Ангорка"',
+    //                         imgCover: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg`,
+    //                         size: ['48', '50', '52', '54', '56'],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#445471', img: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg` },
     //                         ],
-    //                     }
+    //                     },
     //                 ],
     //             },
     //             {
-    //                 title: 'Майки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 id: uuidv4(),
+    //                 title: 'Верхняя одежда',
+    //                 imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Майки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Куртка',
+    //                         imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
+    //                         size: [],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
     //                         ],
-    //                     }
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Плащь',
+    //                         imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
+    //                         ],
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Пиджаки',
+    //                         imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
+    //                         ],
+    //                     },
     //                 ],
     //             },
     //             {
-    //                 title: 'Носки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 id: uuidv4(),
+    //                 title: 'Платья',
+    //                 imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Носки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Платье черное',
+    //                         imgCover: `${imgPath}06-02-24/platie-women-black.jpg`,
+    //                         size: [],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#0A0003', img: `${imgPath}06-02-24/platie-women-black.jpg` },
     //                         ],
-    //                     }
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Платье бирюзовое',
+    //                         imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#0B4765', img: `${imgPath}06-02-24/platie-women-blue.jpg` },
+    //                         ],
+    //                     },
     //                 ],
     //             },
     //             {
+    //                 id: uuidv4(),
+    //                 title: 'Сорочки',
+    //                 imgCover: `${imgPath}06-02-24/sorochka-women-blue.jpg`,
+    //                 model: [
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Сорочка синяя',
+    //                         imgCover: `${imgPath}06-02-24/sorochka-women-blue.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#537FC0', img: `${imgPath}06-02-24/sorochka-women-blue.jpg` },
+    //                         ],
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Сорочка с начесом',
+    //                         imgCover: `${imgPath}06-02-24/sorochka-women-50-60.jpg`,
+    //                         size: ['50', '52', '54', '56'],
+    //                         color: [
+    //                             { color: '#E8EBF1', img: `${imgPath}06-02-24/sorochka-women-50-60.jpg` },
+    //                         ],
+    //                     },
+    //                 ],
+    //             },
+    //             {
+    //                 id: uuidv4(),
     //                 title: 'Трико',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
+    //                 imgCover: `${imgPath}06-02-24/triko-women.jpg`,
     //                 model: [
     //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
+    //                         id: uuidv4(),
+    //                         title: 'Трико бирюзовое',
+    //                         imgCover: `${imgPath}06-02-24/triko-women.jpg`,
+    //                         size: [],
     //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
+    //                             { color: '#30625F', img: `${imgPath}06-02-24/triko-women.jpg` },
     //                         ],
-    //                     }
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Трико',
+    //                         imgCover: `${imgPath}06-02-24/triko-womens.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#2F3A56', img: `${imgPath}06-02-24/triko-womens.jpg` },
+    //                         ],
+    //                     },
+    //                 ],
+    //             },
+    //             {
+    //                 id: uuidv4(),
+    //                 title: 'Туника',
+    //                 imgCover: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg`,
+    //                 model: [
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Туника "Ангорка"',
+    //                         imgCover: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg`,
+    //                         size: ['50', '52', '54', '56', '58', '60'],
+    //                         color: [
+    //                             { color: '#916B76', img: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg` },
+    //                         ],
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Туника темная',
+    //                         imgCover: `${imgPath}06-02-24/tunika-black-women.jpg` ?? `/imgs/no-photo.png`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#20202F', img: `${imgPath}06-02-24/tunika-black-women.jpg` },
+    //                         ],
+    //                     },
+    //                     {
+    //                         id: uuidv4(),
+    //                         title: 'Туника',
+    //                         imgCover: `${imgPath}06-02-24/tunika-blue-women.jpg`,
+    //                         size: [],
+    //                         color: [
+    //                             { color: '#183C4B', img: `${imgPath}06-02-24/tunika-blue-women.jpg` },
+    //                         ],
+    //                     },
     //                 ],
     //             },
     //         ],
     //     },
-    //     girls: {
-    //         title: 'Для девочек',
-    //         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //         cloth: [
-    //             {
-    //                 title: 'Футболки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Футболка "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Джинсы',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Майки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Майки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Носки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Носки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Трико',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //         ],
-    //     },
-    //     boys: {
-    //         title: 'Для мальчиков',
-    //         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //         cloth: [
-    //             {
-    //                 title: 'Футболки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Футболка "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Джинсы',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Джинсы "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Майки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Майки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Носки',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Носки "Богатырь"',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //             {
-    //                 title: 'Трико',
-    //                 imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                 model: [
-    //                     {
-    //                         title: 'Трико Богатырь',
-    //                         imgCover: `${imgPath}futbolka_bogatyr_green.jpg`,
-    //                         size: ['160', '170', '180'],
-    //                         color: [
-    //                             { color: '#00ff00', img: `${imgPath}futbolka_bogatyr_green.jpg` },
-    //                             { color: '#ff0000', img: `${imgPath}futbolka_bogatyr_red.jpg` }
-    //                         ],
-    //                     }
-    //                 ],
-    //             },
-    //         ],
-    //     },
-    // },
-    catalog: [
-        {
-            id: uuidv4(),
-            title: 'Мужская одежда',
-            imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
-            cloth: [
-                {
-                    id: uuidv4(),
-                    title: 'Мужские футболки',
-                    imgCover: `${imgPath}06-02-24/futbolri-mens.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Футболка ',
-                            imgCover: `${imgPath}06-02-24/futbolka-men-48-56.jpg`,
-                            size: ['48', '50', '52', '54', '56'],
-                            color: [
-                                { color: '#4C4B27', img: `${imgPath}06-02-24/futbolka-men-48-56.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Футболки',
-                            imgCover: `${imgPath}06-02-24/futbolri-mens.jpg`,
-                            size: ['48', '50', '52', '54', '56'],
-                            color: [
-                                { color: '#12B1A0', img: `${imgPath}06-02-24/futbolri-mens.jpg` },
-                                { color: '#0E758D', img: `${imgPath}06-02-24/futbolri-mens.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Тельняшка с начесом',
-                            imgCover: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg`,
-                            size: ['48', '50', '52', '54', '56'],
-                            color: [
-                                { color: '#333249', img: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg` },
-                                { color: '#223685', img: `${imgPath}06-02-24/telnyashka-naches-48-56-men.jpg` },
 
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Мужские толстовки',
-                    imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Толстовка',
-                            imgCover: `${imgPath}06-02-24/tolstovka-blue-men.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#193E71', img: `${imgPath}06-02-24/tolstovka-blue-men.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Толстовка "Хакки"',
-                            imgCover: `${imgPath}06-02-24/tolstovka-haki-men.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#524E30', img: `${imgPath}06-02-24/tolstovka-haki-men.jpg` },
-                            ],
-                        },
-                    ],
-                },
+    // ],
 
-            ],
-        },
-        {
-            id: uuidv4(),
-            title: 'Женская одежда',
-            imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
-            cloth: [
-                {
-                    id: uuidv4(),
-                    title: 'Футболки',
-                    imgCover: `${imgPath}06-02-24/futbolka-women-blue.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Футболка',
-                            imgCover: `${imgPath}06-02-24/futbolka-women-blue.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#30384E', img: `${imgPath}06-02-24/futbolka-women-blue.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Футболка "cats"',
-                            imgCover: `${imgPath}06-02-24/futbolka-women-123.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#E6E3E8', img: `${imgPath}06-02-24/futbolka-women-123.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Футболка в полоску',
-                            imgCover: `${imgPath}06-02-24/futbolka-women-pink.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#B94084', img: `${imgPath}06-02-24/futbolka-women-pink.jpg` },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Халаты',
-                    imgCover: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Халат "Ангорка"',
-                            imgCover: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg`,
-                            size: ['48', '50', '52', '54', '56'],
-                            color: [
-                                { color: '#445471', img: `${imgPath}06-02-24/halat-Angorka-48-56-blue-women.jpg` },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Верхняя одежда',
-                    imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Куртка',
-                            imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Плащь',
-                            imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Пиджаки',
-                            imgCover: `${imgPath}06-02-24/kurtka-black-white-women.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#080A15', img: `${imgPath}06-02-24/kurtka-black-white-women.jpg` },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Платья',
-                    imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Платье черное',
-                            imgCover: `${imgPath}06-02-24/platie-women-black.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#0A0003', img: `${imgPath}06-02-24/platie-women-black.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Платье бирюзовое',
-                            imgCover: `${imgPath}06-02-24/platie-women-blue.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#0B4765', img: `${imgPath}06-02-24/platie-women-blue.jpg` },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Сорочки',
-                    imgCover: `${imgPath}06-02-24/sorochka-women-blue.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Сорочка синяя',
-                            imgCover: `${imgPath}06-02-24/sorochka-women-blue.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#537FC0', img: `${imgPath}06-02-24/sorochka-women-blue.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Сорочка с начесом',
-                            imgCover: `${imgPath}06-02-24/sorochka-women-50-60.jpg`,
-                            size: ['50', '52', '54', '56'],
-                            color: [
-                                { color: '#E8EBF1', img: `${imgPath}06-02-24/sorochka-women-50-60.jpg` },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Трико',
-                    imgCover: `${imgPath}06-02-24/triko-women.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Трико бирюзовое',
-                            imgCover: `${imgPath}06-02-24/triko-women.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#30625F', img: `${imgPath}06-02-24/triko-women.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Трико',
-                            imgCover: `${imgPath}06-02-24/triko-womens.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#2F3A56', img: `${imgPath}06-02-24/triko-womens.jpg` },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Туника',
-                    imgCover: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg`,
-                    model: [
-                        {
-                            id: uuidv4(),
-                            title: 'Туника "Ангорка"',
-                            imgCover: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg`,
-                            size: ['50', '52', '54', '56', '58', '60'],
-                            color: [
-                                { color: '#916B76', img: `${imgPath}06-02-24/tunika-Angorka-50-60-women.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Туника темная',
-                            imgCover: `${imgPath}06-02-24/tunika-black-women.jpg` ?? `/imgs/no-photo.png`,
-                            size: [],
-                            color: [
-                                { color: '#20202F', img: `${imgPath}06-02-24/tunika-black-women.jpg` },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            title: 'Туника',
-                            imgCover: `${imgPath}06-02-24/tunika-blue-women.jpg`,
-                            size: [],
-                            color: [
-                                { color: '#183C4B', img: `${imgPath}06-02-24/tunika-blue-women.jpg` },
-                            ],
-                        },
-                    ],
-                },
-            ],
-        },
 
-    ],
+    fetchCatalog: async () => {
+        try {
+            const res = await fetch('http://localhost:3000/api')
+            set({ cat: await res.json() })
 
+        } catch (error) {
+            console.log(error.message)
+        }
+    },
 
     getCatalogData: () => {
         let arr = []
-        const cat = get().catalog
+        const cat = get().cat
         cat.forEach((el) => arr.push({ title: el.title, imgCover: el.imgCover, id: el.id }))
         return arr
     },
 
     getClothData: (path) => {
         let arr = []
-        const cat = get().catalog
+        const cat = get().cat
         cat.forEach((el) => {
             if (path === strToPath(el.title)) {
                 arr.push({ title: el.title, cloth: el.cloth })
@@ -640,7 +312,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
 
     getModelData: (pathCloth, pathModel) => {
         let arr = []
-        const cat = get().catalog
+        const cat = get().cat
         cat.forEach((el) => {
             if (pathCloth === strToPath(el.title)) {
                 el.cloth.forEach((cloth) => {
@@ -659,7 +331,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
 
     getSingleModelData: (pathCloth, pathModel, pathSingleModel) => {
         let arr = []
-        const cat = get().catalog
+        const cat = get().cat
         cat.forEach((el) => {
             if (pathCloth === strToPath(el.title)) {
                 el.cloth.forEach((cloth) => {
@@ -680,7 +352,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
 
     getSearchData: () => {
         const arrAllTitle = []
-        get().catalog.forEach((el) => {
+        get().cat.forEach((el) => {
             arrAllTitle.push(el.title)
             el.cloth.forEach((el) => {
                 arrAllTitle.push(el.title)

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { strToPath } from '@/app/helper'
 import s from './style.module.css'
 import NotFound from '@/app/not-found'
-export const CardModelComponent = ({ listData }) => {
+export const CardModelComponent = ({ listData = [] }) => {
     const path = ({ category = null, title, clothTitle = null }) => {
         return `/catalog/${strToPath(category)}/${strToPath(clothTitle)}/${strToPath(title)}`
     }

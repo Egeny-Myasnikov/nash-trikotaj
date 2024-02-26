@@ -23,8 +23,10 @@ export const DropDownList = ({ children, btnAtiveText, btnNotActiveText = '' }) 
                 {btnNotActiveText ? !isOpen ? btnAtiveText : btnNotActiveText : btnAtiveText}
             </button>
             {isOpen &&
-                <div ref={childrenRef} className={`${s.children} `}>
-                    {children}
+                <div ref={childrenRef} className={`${s.wrap}`}>
+                    <div className={`${s.children} `}>
+                        {children}
+                    </div>
                 </div>
             }
 

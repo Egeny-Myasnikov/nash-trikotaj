@@ -1,3 +1,4 @@
+import { useCatalogStore } from "@/app/store/catalogStore"
 
 const rusToLat = function (str) {
   let ru = {

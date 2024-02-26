@@ -40,28 +40,26 @@
     background-color: rgba(var(--rgb-first-color), .2);
 }
 
+
+
 .children {
-    height: 0;
     position: relative;
-    margin-top: 0px;
+    min-height: 0px;
+    overflow: hidden;
     padding: 0px;
-    border: 0px solid #333;
-    transform-origin: top left;
-    transform: scale(0);
     transition: .4s;
 }
 
-.children.open {
-    height: 600px;
-    transform: scale(1);
-    margin-top: 20px;
+.wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .45s linear;
+}
+
+.wrap.open {
+    grid-template-rows: 1fr;
+}
+
+.wrap.open .children {
     padding: 20px;
-    border: 1px solid #333;
-    transition: .4s;
-}
-
-@media (max-width: 505px) {
-    .children.open {
-        height: 450px;
-    }
 }

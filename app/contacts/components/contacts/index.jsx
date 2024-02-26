@@ -8,9 +8,7 @@ export const ContactsComponent = ({ mapIsOpen }) => {
 
             <p>Приходите к нам по адресу: <br /> <strong className={`${s.addressStrong}`}> г. Саратов, Крымская, 5</strong></p>
             <DropDownList btnAtiveText='Развернуть карту' btnNotActiveText='Свернуть Карту'>
-
                 <iframe className={`${s.map}`} src="https://yandex.ru/map-widget/v1/?ll=45.926377%2C51.489162&mode=poi&poi%5Bpoint%5D=45.927189%2C51.489463&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D69567444196&z=18.35" allowFullScreen={true} ></iframe>
-
             </DropDownList>
 
             <p>Звоните нам по телефону:

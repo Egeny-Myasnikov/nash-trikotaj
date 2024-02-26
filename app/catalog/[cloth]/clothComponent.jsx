@@ -3,9 +3,14 @@ import { useCatalogStore } from '@/app/store/catalogStore'
 import s from './style.module.css'
 import { CardComponent } from '@/app/catalog/components/card'
 import { BreadCrumbs } from '@/app/components/breadCrumbs'
+import { useLayoutEffect } from 'react'
 export const ClothComponent = ({ cat }) => {
     const getClothData = useCatalogStore((state) => state.getClothData(cat))
 
+    const fetchCatalog = useCatalogStore((state) => state.fetchCatalog)
+    useLayoutEffect(() => {
+        fetchCatalog()
+    }, [])
     let listData = []
 
     if (getClothData.length !== 0) {

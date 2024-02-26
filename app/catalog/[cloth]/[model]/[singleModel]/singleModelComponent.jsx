@@ -3,12 +3,19 @@ import Image from 'next/image'
 import s from './style.module.css'
 import { useCatalogStore } from '@/app/store/catalogStore'
 import NotFound from '@/app/not-found'
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { BreadCrumbs } from '@/app/components/breadCrumbs'
 export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' }) => {
+
+
+    const fetchCatalog = useCatalogStore((state) => state.fetchCatalog)
+    useLayoutEffect(() => {
+        fetchCatalog()
+    }, [])
+
+
     const [idxColor, setIdxColor] = useState(0)
     const [idxSize, setIdxSize] = useState(0)
-
     const getSingleModelData = useCatalogStore((state) => state.getSingleModelData(cloth, model, singleModel))
     let data = []
 
@@ -17,6 +24,13 @@ export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' 
         data.push({ category: '', clothTitle: '', title: '', imgCover: '', color: [''], size: [''] })
 
     const { category, clothTitle, title, color, size } = data[0]
+
+
+    const bigPhoto = (e) => {
+        if (e.target.classList.contains(s.img)) {
+            e.target.parentElement.classList.toggle(s.showBig)
+        }
+    }
 
     return (
         <>
@@ -32,7 +46,7 @@ export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' 
 
 
                         <div className={`${s.card}`}>
-                            <div className={`${s.imgWrap}`}>
+                            <div onClick={(e) => bigPhoto(e)} className={`${s.imgWrap}`}>
                                 <Image priority className={`${s.img}`} src={color[idxColor].img} width={300} height={300} alt={title} />
                             </div>
                             <div className={`${s.info}`}>

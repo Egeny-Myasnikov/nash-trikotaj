@@ -7,7 +7,7 @@ export async function GET(request) {
 
     let currentCatalog = catalog
     if (query) {
-        const cat = await newCatalog()
+        const cat = newCatalog()
         currentCatalog = cat.filter(cat => strToPath(cat.title) === query.toLocaleLowerCase())
     }
 

@@ -1,5 +1,3 @@
-import { useCatalogStore } from "@/app/store/catalogStore"
-
 const rusToLat = function (str) {
   let ru = {
     'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
@@ -28,4 +26,27 @@ export const strToPath = str => rusToLat(str).split(' ').join('-').toLocaleLower
 
 export const path = ({ category = null, title, clothTitle = null }) => {
   return `/catalog${category && '/' + strToPath(category)}${clothTitle && '/' + strToPath(clothTitle)}/${strToPath(title)}`
+}
+
+// export async function fetchData(params) {
+//   const URL = 'http://localhost:3000'
+
+//   const param = params ? `?q=${params}` : ''
+//   const res = await fetch(`${URL}/api${param}`)
+//   const [catalog] = await res.json()
+//   return catalog
+// }
+
+export async function getMetadata(params) {
+  try {
+    const URL = 'http://localhost:3000'
+    const param = params ? `?q=${params}` : ''
+    const res = await fetch(`${URL}/api${param}`)
+    const [catalog] = await res.json()
+    return {
+      title: catalog?.title
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
 }

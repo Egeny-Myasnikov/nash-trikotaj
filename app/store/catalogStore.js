@@ -284,7 +284,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
 
     fetchCatalog: async () => {
         try {
-            const res = await fetch('https://www.hlop-odejda.ru/api')
+            const res = await fetch('http://localhost:3000/api')
             set({ cat: await res.json() })
 
         } catch (error) {
@@ -295,14 +295,14 @@ export const useCatalogStore = create(devtools((set, get) => ({
     getCatalogData: () => {
         let arr = []
         const cat = get().cat
-        cat.forEach((el) => arr.push({ title: el.title, imgCover: el.imgCover, id: el.id }))
+        cat.length !== 0 && cat.forEach((el) => arr.push({ title: el.title, imgCover: el.imgCover, id: el.id }))
         return arr
     },
 
     getClothData: (path) => {
         let arr = []
         const cat = get().cat
-        cat.forEach((el) => {
+        cat.length !== 0 && cat.forEach((el) => {
             if (path === strToPath(el.title)) {
                 arr.push({ title: el.title, cloth: el.cloth })
             }
@@ -313,7 +313,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
     getModelData: (pathCloth, pathModel) => {
         let arr = []
         const cat = get().cat
-        cat.forEach((el) => {
+        cat.length !== 0 && cat.forEach((el) => {
             if (pathCloth === strToPath(el.title)) {
                 el.cloth.forEach((cloth) => {
                     if (pathModel === strToPath(cloth.title)) {
@@ -332,7 +332,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
     getSingleModelData: (pathCloth, pathModel, pathSingleModel) => {
         let arr = []
         const cat = get().cat
-        cat.forEach((el) => {
+        cat.length !== 0 && cat.forEach((el) => {
             if (pathCloth === strToPath(el.title)) {
                 el.cloth.forEach((cloth) => {
                     if (pathModel === strToPath(cloth.title)) {

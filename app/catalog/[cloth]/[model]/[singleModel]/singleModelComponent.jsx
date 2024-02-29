@@ -5,6 +5,7 @@ import { useCatalogStore } from '@/app/store/catalogStore'
 import NotFound from '@/app/not-found'
 import { useLayoutEffect, useState } from 'react'
 import { BreadCrumbs } from '@/app/components/breadCrumbs'
+import Loading from '@/app/loading'
 export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' }) => {
 
 
@@ -87,7 +88,7 @@ export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' 
                             Exercitationem optio nisi laboriosam autem architecto saepe enim id harum distinctio doloremque delectus consectetur soluta reprehenderit rerum non nostrum, deleniti molestias ratione accusamus. Minima quisquam et eos quaerat quam nobis.</p>
                     </div>
                 )
-                : <NotFound />
+                : <Loading />
             }
         </>
     )

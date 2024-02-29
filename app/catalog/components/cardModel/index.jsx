@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { strToPath } from '@/app/helper'
 import s from './style.module.css'
 import NotFound from '@/app/not-found'
+import Loading from '@/app/loading'
 export const CardModelComponent = ({ listData = [] }) => {
     const path = ({ category = null, title, clothTitle = null }) => {
         return `/catalog/${strToPath(category)}/${strToPath(clothTitle)}/${strToPath(title)}`
@@ -33,7 +34,7 @@ export const CardModelComponent = ({ listData = [] }) => {
                         </div>
                     </Link>
                 )) :
-                <NotFound />
+                <Loading />
             }
 
         </ul>

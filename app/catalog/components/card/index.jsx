@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { path } from '@/app/helper'
 import s from './style.module.css'
 import NotFound from '@/app/not-found'
+import Loading from '@/app/loading'
 export const CardComponent = ({ listData }) => {
 
     return (
@@ -18,7 +19,7 @@ export const CardComponent = ({ listData }) => {
                         <h4 className={`${s.title}`}>{title}</h4>
                     </Link>
                 )) :
-                <NotFound />
+                <Loading />
             }
 
         </ul>

@@ -278,7 +278,7 @@ export const catalog = [
 
 ]
 
-export const newCatalog = async () => {
+export const newCatalog = () => {
     let newCatalog = []
     catalog.forEach(cat => {
         newCatalog.push(cat)

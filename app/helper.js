@@ -39,7 +39,7 @@ export const path = ({ category = null, title, clothTitle = null }) => {
 
 export async function getMetadata(params) {
   try {
-    const URL = 'http://localhost:3000'
+    const URL = process.env.HOST
     const param = params ? `?q=${params}` : ''
     const res = await fetch(`${URL}/api${param}`)
     const [catalog] = await res.json()

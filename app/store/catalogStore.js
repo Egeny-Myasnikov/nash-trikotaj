@@ -285,7 +285,7 @@ export const useCatalogStore = create(devtools((set, get) => ({
     fetchCatalog: async () => {
         try {
 
-            const res = await fetch('https://www.hlop-odejda.ru/api')
+            const res = await fetch('http://localhost:3000/api')
             set({ cat: await res.json() })
 
         } catch (error) {

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.10.2",
     "dotenv": "^16.4.5",
     "next": "14.0.4",
     "react": "^18",
@@ -17,5 +18,8 @@
     "react-transition-group": "^4.4.5",
     "uuid": "^9.0.1",
     "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "prisma": "^5.10.2"
   }
 }

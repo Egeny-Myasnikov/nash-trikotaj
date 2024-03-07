@@ -4,10 +4,13 @@ import { useCatalogStore } from '@/app/store/catalogStore'
 import { CardComponent } from '@/app/catalog/components/card'
 import { useLayoutEffect } from 'react'
 import Loading from '@/app/loading'
-export const CatalogSection = () => {
+
+export function CatalogSection() {
+
     const getCatalogData = useCatalogStore((state) => state.getCatalogData())
     const fetchCatalog = useCatalogStore((state) => state.fetchCatalog)
     useLayoutEffect(() => {
+
         fetchCatalog()
     }, [])
     return (

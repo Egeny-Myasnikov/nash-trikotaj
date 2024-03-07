@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id      Int       @id @default(autoincrement())
+  name    String?
+  email   String    @unique
+  catalog Catalog[]
+}
+
+model Catalog {
+  id       Int     @id @default(autoincrement())
+  title    String
+  imgCover String
+  author   Admin   @relation(fields: [authorId], references: [id])
+  authorId Int
+  cloth    Cloth[]
+}
+
+model Cloth {
+  id        Int      @id @default(autoincrement())
+  title     String
+  imgCover  String
+  catalog   Catalog? @relation(fields: [catalogId], references: [id])
+  catalogId Int?
+  model     Model[]
+}
+
+model Model {
+  id       Int     @id @default(autoincrement())
+  title    String
+  imgCover String
+  cloth    Cloth?  @relation(fields: [clothId], references: [id])
+  clothId  Int?
+  size     Size[]
+  color    Color[]
+}
+
+model Size {
+  size    String @unique
+  model   Model? @relation(fields: [modelId], references: [id])
+  modelId Int?
+}
+
+model Color {
+  color   String @unique
+  model   Model? @relation(fields: [modelId], references: [id])
+  modelId Int?
+}

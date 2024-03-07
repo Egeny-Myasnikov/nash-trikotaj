@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server"
 import { catalog, newCatalog } from "./catalog"
 import { strToPath } from "../helper"
+
+
+
 export async function GET(request) {
     const { searchParams } = new URL(request.url)
     const query = searchParams.get('q')

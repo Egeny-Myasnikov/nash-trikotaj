@@ -6,13 +6,11 @@ export const metadata = {
     description: ' Каталог магазина "ХлопОдежда" предлагает вам купить в Саратове мужскую, женскую, детскую одежду от производителя "Богатырь" по низким ценам',
 }
 
-export default function Catalog() {
 
+export default async function Catalog() {
     return (
         <div className={`${s.cat}`}>
-
             <CatalogSection />
-
         </div>
     )
 }

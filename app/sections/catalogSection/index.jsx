@@ -9,6 +9,7 @@ export const CatalogSection = () => {
     const getCatalogData = useCatalogStore((state) => state.getCatalogData())
     const fetchCatalog = useCatalogStore((state) => state.fetchCatalog)
     useLayoutEffect(() => {
+
         fetchCatalog()
     }, [])
     return (

@@ -2,39 +2,43 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { strToPath } from '@/app/helper'
 import s from './style.module.css'
-import NotFound from '@/app/not-found'
 import Loading from '@/app/loading'
-export const CardModelComponent = ({ listData = [] }) => {
-    const path = ({ category = null, title, clothTitle = null }) => {
-        return `/catalog/${strToPath(category)}/${strToPath(clothTitle)}/${strToPath(title)}`
+export const CardModelComponent = ({ listData = [], cloth, model }) => {
+    const path = ({ title, id }) => {
+        return `/catalog/${cloth}/${model}/${strToPath(title)}%20${id}`
     }
     return (
         <ul className={`${s.catalogList}`}>
 
             {listData.length !== 0 ?
-                listData.map(({ title = '', imgCover = '', category = '', clothTitle = '', id, color = [], size = [] }) => (
+                listData.map(({ title = '', imgCover = '', id, color = '', size = '' }) => (
                     <Link
                         key={id}
                         className={`${s.catalogCard}`}
-                        href={path({ title, category, clothTitle })}
+                        href={path({ title, id })}
                     >
-                        <Image className={`${s.img}`} src={imgCover || '/imgs/no-photo.png'} width={300} height={300} alt={title} />
+                        <Image className={`${s.img}`} src={imgCover.slice(6) || '/imgs/no-photo.png'} width={300} height={300} alt={title} />
                         <div className={`${s.info}`}>
                             <h4 className={`${s.title}`}>{title}</h4>
                             <ul className={`${s.clothColors}`}>
-                                <p className={`${s.infoTitle}`}>Цвета:</p>
-                                {color.map(({ color }, idx) => <li key={idx} style={{ '--clothColor': color }} className={`${s.clothColor}`}></li>)}
+                                {!size ? null : (<>
+                                    <p className={`${s.infoTitle}`}>Цвет:</p>
+                                    <li style={{ '--clothColor': color }} className={`${s.clothColor}`}></li>
+                                </>)}
 
                             </ul>
                             <ul className={`${s.clothSizes}`}>
-                                <p className={`${s.infoTitle}`}>Размеры:</p>
-                                {size.map((size, idx) => <li key={idx} className={`${s.clothSize}`}>{size}</li>)}
-
+                                {!size ? null : (
+                                    <>
+                                        <p className={`${s.infoTitle}`}>Размеры:</p>
+                                        <li className={`${s.clothSize}`}>{size}</li>
+                                    </>
+                                )}
                             </ul>
                         </div>
                     </Link>
                 )) :
-                <Loading />
+                'Ничего нет'
             }
 
         </ul>

@@ -1,0 +1,145 @@
+.authForm {
+    --rgb-active: 222, 235, 234;
+    --rgb-no-active: 255, 255, 255;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    border: 2px solid var(--first-color);
+    border-radius: 20px;
+}
+
+/* input text */
+
+.fields {
+    display: flex;
+    gap: 10px;
+}
+
+.formControl {
+    flex: 1 0 auto;
+    height: 40px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 3;
+    transition: .4s;
+    background-color: rgba(var(--rgb-no-active), 0.7);
+    transition: .4s;
+}
+
+.formControl::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(var(--rgb-first-color), 1);
+    transition: .4s;
+}
+
+.fieldText {
+    position: absolute;
+    padding-left: 10px;
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    outline: none;
+    transition: .4s;
+}
+
+.fieldText::placeholder {
+    color: transparent;
+}
+
+.labelText {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    transition: .4s;
+}
+
+.fieldText:focus+.labelText,
+.labelTextActive {
+    padding: 5px;
+    left: 0px;
+    top: -70%;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: .4s;
+}
+
+.formControlActive {
+    background-color: rgba(var(--rgb-active), 1);
+}
+
+.formControlActive::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, .4);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, .4);
+    animation: fide .4s;
+}
+
+@keyframes fide {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* btn */
+.btns {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+    background-color: rgba(var(--rgb-no-active), 1);
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    transition: background-color .4s;
+    justify-self: right;
+    margin-top: 20px;
+}
+
+.btnReset {
+    justify-self: left;
+}
+
+.btn:hover {
+    background-color: rgba(var(--rgb-active), 1);
+    border: 2px solid rgba(var(--rgb-first-color), .7);
+}
+
+@media (max-width: 760px) {
+    .btns {
+        gap: 10px;
+    }
+
+    .fields {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

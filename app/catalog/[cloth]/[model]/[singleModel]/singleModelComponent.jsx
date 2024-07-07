@@ -1,32 +1,18 @@
 'use client'
 import Image from 'next/image'
 import s from './style.module.css'
-import { useCatalogStore } from '@/app/store/catalogStore'
-import NotFound from '@/app/not-found'
-import { useLayoutEffect, useState } from 'react'
+import { useContext } from 'react'
 import { BreadCrumbs } from '@/app/components/breadCrumbs'
 import Loading from '@/app/loading'
-export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' }) => {
-
-
-    const fetchCatalog = useCatalogStore((state) => state.fetchCatalog)
-    useLayoutEffect(() => {
-        fetchCatalog()
-    }, [])
-
-
-    const [idxColor, setIdxColor] = useState(0)
-    const [idxSize, setIdxSize] = useState(0)
-    const getSingleModelData = useCatalogStore((state) => state.getSingleModelData(cloth, model, singleModel))
-    let data = []
-
-    getSingleModelData.length !== 0 ?
-        data.push(getSingleModelData[0]) :
-        data.push({ category: '', clothTitle: '', title: '', imgCover: '', color: [''], size: [''] })
-
-    const { category, clothTitle, title, color, size } = data[0]
-
-
+import { ListClothContext } from '@/app/providers'
+import { strToPath } from '@/app/helper'
+export const SingleModelComponent = ({ cloth = '', model = '', id }) => {
+    const { clothsContext: { clothList }, typesContext: { typeList }, categoryesContext: { categoryList } } = useContext(ListClothContext)
+    const data = clothList.filter((cloth) => cloth.id === id)[0]
+    const currentModelTitle = model.split('%20')[0]
+    const currentCategoryId = cloth.split('%20')[1]
+    const [currentType] = typeList.filter(type => strToPath(type.title) === currentModelTitle)
+    const [currentCategory] = categoryList.filter(cat => cat.id === +currentCategoryId)
     const bigPhoto = (e) => {
         if (e.target.classList.contains(s.img)) {
             e.target.parentElement.classList.toggle(s.showBig)
@@ -35,57 +21,55 @@ export const SingleModelComponent = ({ cloth = '', model = '', singleModel = '' 
 
     return (
         <>
-            {getSingleModelData.length !== 0 ?
+            {data ?
                 (
-                    <div style={{ '--colorBorder': `${color[idxColor].color}22` }} className={`${s.singleModelComponent}`}>
+                    // style={{ '--colorBorder': `${color[idxColor].color}22` }}
+                    <div className={`${s.singleModelComponent}`}>
 
                         <BreadCrumbs breadCrumbs={[
                             { title: 'Каталог', path: `/catalog` },
-                            { title: category, path: `/catalog/${cloth}` },
-                            { title: clothTitle, path: `/catalog/${cloth}/${model}` },
+                            { title: currentCategory?.title, path: `/catalog/${cloth}` },
+                            { title: currentType?.title, path: `/catalog/${cloth}/${model}` },
                         ]} />
 
 
                         <div className={`${s.card}`}>
                             <div onClick={(e) => bigPhoto(e)} className={`${s.imgWrap}`}>
-                                <Image priority className={`${s.img}`} src={color[idxColor].img} width={300} height={300} alt={title} />
+                                <Image
+                                    priority
+                                    className={`${s.img}`}
+                                    src={data.imgCover.slice(6) || 'imgs/no-photo.png'}
+                                    width={300}
+                                    height={300}
+                                    alt={data.title}
+                                />
                             </div>
                             <div className={`${s.info}`}>
-                                <h1 className={`${s.title}`}>{title}</h1>
+                                <h1 className={`${s.title}`}>{data.title}</h1>
                                 <div className={`${s.size}`}>
                                     <h4 className={`${s.sizeTitle}`}>Размеры:</h4>
                                     <ul className={`${s.sizeList}`}>
-                                        {size.map((size, idx) => (
-                                            <li key={idx}>
-                                                <button
-                                                    onClick={() => setIdxSize(idx)}
-                                                    className={`${s.sizeItem} ${idxSize === idx ? s.active : ''}`}
-                                                    title={`Размер: ${size}`}
-                                                >
-                                                    {size}</button></li>
-                                        ))}
+
+                                        {data.size}
                                     </ul>
                                 </div>
                                 <div className={`${s.color}`}>
                                     <h4 className={`${s.colorTitle}`}>Цвета:</h4>
                                     <ul className={`${s.colorList}`}>
-                                        {color.map(({ color }, idx) =>
-                                        (<li key={idx}>
-                                            <button
-                                                onClick={() => setIdxColor(idx)}
-                                                style={{ '--color': color }}
-                                                className={`${s.colorItem} ${idxColor === idx ? s.active : ''}`}
-                                                title={`Цвет: ${color}`}
-                                            ></button></li>
-                                        ))}
 
+                                        <li
+                                            style={{ '--color': data.color }}
+                                            className={`${s.colorItem}`}
+                                        ></li>
                                     </ul>
                                 </div>
                             </div>
 
                         </div>
                         <p className={`${s.description}`}>
-                            Exercitationem optio nisi laboriosam autem architecto saepe enim id harum distinctio doloremque delectus consectetur soluta reprehenderit rerum non nostrum, deleniti molestias ratione accusamus. Minima quisquam et eos quaerat quam nobis.</p>
+                            {data?.description}
+                        </p>
+
                     </div>
                 )
                 : <Loading />

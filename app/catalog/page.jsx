@@ -1,5 +1,5 @@
-import s from './style.module.css'
-import { CatalogSection } from './sections/catalogSection'
+
+import { CatalogHero } from './sections/catalogHero'
 
 export const metadata = {
     title: 'Каталог',
@@ -7,10 +7,10 @@ export const metadata = {
 }
 
 
-export default async function Catalog() {
+export default async function CatalogPage() {
     return (
-        <div className={`${s.cat}`}>
-            <CatalogSection />
-        </div>
+        <>
+            <CatalogHero />
+        </>
     )
 }

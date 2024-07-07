@@ -1,5 +1,4 @@
-import { ContactsComponent } from './components/contacts'
-import s from './page.module.css'
+import { ContactsHero } from './sections/contactsHero'
 
 export const metadata = {
     title: 'Контакты',
@@ -8,8 +7,8 @@ export const metadata = {
 
 export default function Contacts() {
     return (
-        <section className={`${s.cont}`}>
-            <ContactsComponent />
-        </section>
+        <>
+            <ContactsHero />
+        </>
     )
 }

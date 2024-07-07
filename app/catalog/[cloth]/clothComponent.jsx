@@ -1,30 +1,20 @@
 'use client'
-import { useCatalogStore } from '@/app/store/catalogStore'
 import s from './style.module.css'
 import { CardComponent } from '@/app/catalog/components/card'
 import { BreadCrumbs } from '@/app/components/breadCrumbs'
-import { useLayoutEffect } from 'react'
-export const ClothComponent = ({ cat }) => {
-    const getClothData = useCatalogStore((state) => state.getClothData(cat))
+import { useContext } from 'react'
+import { ListClothContext } from '@/app/providers'
+export const ClothComponent = ({ id }) => {
 
-    const fetchCatalog = useCatalogStore((state) => state.fetchCatalog)
-    useLayoutEffect(() => {
-        fetchCatalog()
-    }, [])
-    let listData = []
-
-    if (getClothData.length !== 0) {
-        const titleCategory = getClothData[0].title
-        listData = getClothData[0].cloth
-        listData.forEach((el) => el.category = titleCategory)
-    }
-
-
+    const { typesContext: { typeList }, categoryesContext: { categoryList } } = useContext(ListClothContext)
+    const typesFromCategoryId = (id) => typeList.filter(({ catalogId }) => catalogId === id)
+    const titleCategory = (catId) => categoryList.filter(({ id }) => catId === id)
+    const category = `${titleCategory(+id)[0]?.title}%20${titleCategory(+id)[0]?.id}`
     return (
         <div className={`${s.category}`}>
             <BreadCrumbs breadCrumbs={[{ title: 'Каталог', path: `/catalog` }]} />
-            <h1 className={`${s.titleCategory}`}>{getClothData.length !== 0 ? getClothData[0].title : null}</h1>
-            <CardComponent listData={listData} />
+            <h1 className={`${s.titleCategory}`}>{titleCategory(+id)[0]?.title}</h1>
+            <CardComponent listData={typesFromCategoryId(+id)} titleCategory={category} />
 
         </div>
     )

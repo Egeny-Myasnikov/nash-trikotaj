@@ -6,11 +6,11 @@ export const ModalWindow = ({ onClick, children, isVisible, setIsVisible, title 
     const [actionClose, setActionClose] = useState(isVisible)
     const DALAY = 700
 
-    const closeWindow = ()=>{
-         setActionClose(false)
-                setTimeout(() => {
-                    setIsVisible(false)
-                }, DALAY);
+    const closeWindow = () => {
+        setActionClose(false)
+        setTimeout(() => {
+            setIsVisible(false)
+        }, DALAY);
     }
 
     useEffect(() => {
@@ -22,15 +22,14 @@ export const ModalWindow = ({ onClick, children, isVisible, setIsVisible, title 
 
     return (
         <dialog
-         style={{ '--custom-transition': `${DALAY - 100}ms` }}
-         className={`${s.modalWindow} ${actionClose ? s.open : s.close} `}
-         >
+            style={{ '--custom-transition': `${DALAY - 100}ms` }}
+            className={`${s.modalWindow} ${actionClose ? s.open : s.close} `}
+        >
             <div className={`${s.content}`}>
                 <h3 className={`${s.title}`}>{title}</h3>
                 {children}
             </div>
             <BtnClose onClick={closeWindow} />
-
         </dialog>
     )
 }

@@ -1,16 +1,22 @@
-import { getMetadata } from '@/app/helper';
-import { ClothComponent } from './clothComponent'
-import s from './style.module.css'
+import { ClothHero } from './sections/clothHero'
+import { readCategory } from '@/app/CRUD/read'
 
 export async function generateMetadata({ params: { cloth } }) {
-    return await getMetadata(cloth)
+    const id = cloth.split('%20')[1]
+    const [meta] = await readCategory({ id: +id })
+    return {
+        title: meta?.title,
+        description: meta?.descriptionSEO
+    }
 }
 
-export default function Cloth({ params: { cloth } }) {
+export default function Cloth({ params }) {
+
+    const id = params.cloth.split('%20')[1]
 
     return (
-        <div className={`${s.cat}`}>
-            <ClothComponent cat={cloth} />
-        </div>
+        <>
+            <ClothHero cat={params.cloth} id={id} />
+        </>
     )
 }

@@ -1,0 +1,345 @@
+.form {
+    --rgb-active: 222, 235, 234;
+    --rgb-no-active: 255, 255, 255;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    padding: 40px 20px;
+    margin-top: 20px;
+    border: 2px solid rgba(var(--rgb-first-color), .3);
+    border-radius: 20px;
+}
+
+.selectTitle {
+    font-weight: normal;
+    font-size: var(--text__lg);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.selectTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(var(--first-color), .7), transparent);
+}
+
+/* input text */
+.formControl {
+    display: grid;
+    border-radius: 5px;
+    position: relative;
+    border: none;
+    z-index: 3;
+    transition: .4s;
+    background-color: rgba(var(--rgb-no-active), 0.7);
+    transition: .4s;
+}
+
+.formControl::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(var(--rgb-first-color), 1);
+    transition: .4s;
+}
+
+.fieldText {
+    padding: 0px 10px;
+    background: transparent;
+    border: none;
+    width: 100%;
+    z-index: 2;
+    outline: none;
+    transition: .4s;
+}
+
+.fieldText::placeholder {
+    color: transparent;
+}
+
+
+.labelText {
+    width: 100%;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: .4s;
+}
+
+.fieldText:focus+.labelText,
+.labelTextActive {
+    padding: 5px;
+    left: 0px;
+    top: -15px;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.formControlActive {
+    background-color: rgba(var(--rgb-active), 1);
+}
+
+.formControlActive::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(var(--rgb-active), 1);
+    box-shadow: 0px 10px 15px rgba(var(--rgb-active), 1);
+    animation: fide .4s;
+}
+
+@keyframes fide {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* fieldFile */
+.fieldFile {
+    cursor: pointer;
+    color: var(first-color);
+    background-color: rgba(var(--rgb-active), .4);
+    border-radius: 5px;
+}
+
+.fieldFile::file-selector-button {
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: rgba(var(--rgb-no-active), 1);
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color .4s;
+}
+
+.fieldFile::file-selector-button:hover {
+    background-color: rgba(var(--rgb-active), 1);
+    border: 2px solid rgba(var(--rgb-first-color), .7);
+}
+
+/* ===========!!!=========== */
+
+
+/* select */
+.selectCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.customSelect {
+    display: flex;
+    border-radius: 5px;
+}
+
+.selectItem {
+    --left: 100%;
+    --width: 100%;
+    padding: 10px 40px;
+    position: relative;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.selectItem:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    left: var(--left);
+    top: 0;
+    background: rgba(var(--rgb-first-color), .3);
+    border-radius: 5px;
+    width: var(--width);
+    height: 100%;
+    transition: .4s;
+}
+
+.selectBtn {
+    align-self: flex-end;
+}
+
+.categoryes {
+    position: relative;
+}
+
+.delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background: rgb(255, 185, 185);
+    font-size: 0.8em;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.delete:hover {
+    background: rgb(252, 116, 116);
+    transform: translateY(-3px);
+}
+
+.message {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    transition: .4s;
+}
+
+.messageShow {
+    visibility: visible;
+    opacity: 1;
+}
+
+.messageAccess {
+    background: greenyellow;
+    border: 1px solid rgb(85, 125, 24);
+}
+
+.messageError {
+    background: red;
+    border: 1px solid rgb(110, 0, 0);
+    color: #eee;
+}
+
+
+
+
+/* ===========!!!=========== */
+.customSelect__selectType {
+    margin-top: 20px;
+    gap: 20px;
+    position: relative;
+}
+
+
+.selectLabelRadioBtn {
+    background: #aaa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.plac {
+    --left-pos: 0px;
+    position: absolute;
+    left: var(--left-pos);
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+/* .selectLabelRadioBtn {
+    padding: 10px;
+}
+
+.selectTypeText {
+    padding: 10px;
+    border-radius: 5px;
+    background: #eee;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.selectRadioBtn:checked+.selectTypeText {
+    background: #333;
+} */
+
+
+/* ===========!!!=========== */
+/* ===========!!!=========== */
+
+
+.select {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.select::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(90deg, rgba(var(--rgb-first-color), 1), transparent);
+}
+
+.selectTitle {
+    --selected-color: var(--rgb-success-color);
+    --selected-color: var(--rgb-first-color);
+    font-weight: normal;
+    font-size: var(--text__lg);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.selectTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(var(--selected-color), .7), transparent);
+}
+
+/* btn */
+.btn {
+    border-radius: 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+    background-color: rgba(var(--rgb-no-active), 1);
+    border: 2px solid rgba(var(--rgb-first-color), 1);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    transition: background-color .4s;
+    justify-self: right;
+    margin-top: 20px;
+}
+
+.btnReset {
+    justify-self: left;
+}
+
+.btn:hover {
+    background-color: rgba(var(--rgb-active), 1);
+    border: 2px solid rgba(var(--rgb-first-color), .7);
+}
+
+.selectWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

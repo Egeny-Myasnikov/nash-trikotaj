@@ -1,0 +1,6 @@
+export const CATEGORY = 'category'
+export const CATEGORY_UPDATE = 'categoryUpdate'
+export const TYPE = 'type'
+export const TYPE_UPDATE = 'typeUpdate'
+export const CLOTH = 'cloth'
+export const CLOTH_UPDATE = 'clothUpdate'

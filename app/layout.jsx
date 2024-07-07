@@ -2,6 +2,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { Header } from './parts/Header'
 import { Footer } from './parts/Footer'
+import ListClothProvider from './providers'
 
 const BadScript = localFont({
   src: [{ path: '../public/font/Bad_Script/BadScript-Regular.ttf' }],
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
       <body className={`${Montserrat.variable} ${BadScript.variable}`}>
         <Header />
         <main className="main">
-          {children}
+          <ListClothProvider>
+            {children}
+          </ListClothProvider>
         </main>
         <Footer />
       </body>

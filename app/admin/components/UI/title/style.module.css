@@ -1,0 +1,17 @@
+.title {
+    font-weight: normal;
+    font-size: var(--text__lg);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(var(--rgb-first-color), .7), transparent);
+}

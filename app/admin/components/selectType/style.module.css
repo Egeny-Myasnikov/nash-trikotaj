@@ -1,0 +1,11 @@
+/* select */
+
+.selectBtn {
+    align-self: flex-end;
+}
+
+.selectWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

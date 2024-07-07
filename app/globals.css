@@ -33,6 +33,15 @@
   --third-color: #deebea;
   --rgb-third-color: 222, 235, 234;
 
+  --success-color: #009200;
+  --rgb-success-color: 0, 146, 0;
+
+  --error-color: #9a0000;
+  --rgb-error-color: 154, 0, 0;
+
+  --warning-color: #dba000;
+  --rgb-warning-color: 219, 160, 0;
+
   /* font-size */
   --text__sm: 14px;
   --text__med: 16px;

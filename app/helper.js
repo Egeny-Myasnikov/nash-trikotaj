@@ -1,3 +1,4 @@
+
 const rusToLat = function (str) {
   let ru = {
     'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
@@ -24,29 +25,35 @@ const rusToLat = function (str) {
 
 export const strToPath = str => rusToLat(str).split(' ').join('-').toLocaleLowerCase()
 
-export const path = ({ category = null, title, clothTitle = null }) => {
-  return `/catalog${category && '/' + strToPath(category)}${clothTitle && '/' + strToPath(clothTitle)}/${strToPath(title)}`
+export const path = ({ category = '', title, clothTitle = null, id = null }) => {
+  return `
+  /catalog${category && '/' + strToPath(category)}${clothTitle && '/' + strToPath(clothTitle)}/${strToPath(title) + ' ' + id}`
 }
 
-// export async function fetchData(params) {
-//   const URL = 'http://localhost:3000'
-
-//   const param = params ? `?q=${params}` : ''
-//   const res = await fetch(`${URL}/api${param}`)
-//   const [catalog] = await res.json()
-//   return catalog
+// export async function getMetadata(params) {
+//   try {
+//     const URL = process.env.HOST
+//     const param = params ? `?q=${params}` : ''
+//     const res = await fetch(`${URL}/api${param}`)
+//     const [catalog] = await res.json()
+//     return {
+//       title: catalog?.title
+//     }
+//   } catch (error) {
+//     console.error(error.message);
+//   }
 // }
 
-export async function getMetadata(params) {
-  try {
-    const URL = process.env.HOST
-    const param = params ? `?q=${params}` : ''
-    const res = await fetch(`${URL}/api${param}`)
-    const [catalog] = await res.json()
-    return {
-      title: catalog?.title
-    }
-  } catch (error) {
-    console.error(error.message);
-  }
-}
+// export function getTokenFromLocalStorage() {
+//   const data = localStorage.getItem('token')
+//   const token = data ? JSON.parse(data) : ''
+//   return token
+// }
+
+// export function setTokenToLocalStorage(token) {
+//   localStorage.setItem('token', JSON.stringify(token))
+// }
+
+// export function removeTokenFromLocalStorage() {
+//   localStorage.removeItem('token')
+// }

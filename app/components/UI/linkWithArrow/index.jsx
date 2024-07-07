@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import s from './style.module.css'
-export const LinkWithArrow = ({ children, className, href, right = false, title }) => {
+export const LinkWithArrow = ({ children, className, href, right = false, title, btnFn }) => {
     const styleRight = {
         '--leftBefore': ' var(--leftBefore-direction__right)',
         '--leftAfter': 'var(--leftAfter-direction__right)',
@@ -16,13 +16,28 @@ export const LinkWithArrow = ({ children, className, href, right = false, title 
         marginLeft: '45px',
     }
     return (
-        <Link
-            title={title}
-            style={right ? styleLeft : styleRight}
-            className={`${s.link} ${className}`}
-            href={href}
-        >
-            {children}
-        </Link>
+        <>
+            {
+                href ? (
+                    <Link
+                        title={title}
+                        style={right ? styleLeft : styleRight}
+                        className={`${s.link} ${className}`}
+                        href={href}
+                    >
+                        {children}
+                    </Link>
+                ) : (
+                    <button
+                        title={title}
+                        style={right ? styleLeft : styleRight}
+                        className={`${s.link} ${className}`}
+                        onClick={btnFn}
+                    >{children}</button>
+                )
+
+            }
+
+        </>
     )
 }

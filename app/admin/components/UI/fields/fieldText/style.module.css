@@ -1,0 +1,28 @@
+.fieldText {
+    padding-left: 5px;
+    background-color: var(--second-color);
+    border: none;
+    border-left: 20px solid var(--third-color);
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-radius: 10px;
+    transition: border-left .4s;
+}
+
+.fieldText:focus {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.fieldText:focus::placeholder {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: transform .4s, opacity .4s;
+}
+
+.fieldText:focus {
+    border-left-width: 10px;
+    outline-style: solid;
+    outline-color: var(--third-color);
+}

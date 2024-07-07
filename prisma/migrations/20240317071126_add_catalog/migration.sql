@@ -1,0 +1,10 @@
+-- CreateTable
+CREATE TABLE "Catalog" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "title" TEXT NOT NULL,
+    "icon" TEXT,
+    "imgCover" TEXT,
+    "userId" INTEGER NOT NULL,
+    CONSTRAINT "Catalog_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);

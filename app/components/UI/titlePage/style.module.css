@@ -1,0 +1,13 @@
+.title {
+    font-size: var(--title__lg);
+    color: var(--first-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (max-width: 760px) {
+    .title {
+        font-size: var(--title__sm);
+
+    }
+}
